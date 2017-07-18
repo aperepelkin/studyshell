@@ -1,13 +1,13 @@
 package ru.itstep.studyshell;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-    }
+import java.util.Scanner;
+
+public class App {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String line = scanner.nextLine();
+		Command command = CommandRepository.getInstance().create(line);
+		if (command != null)
+			command.execute();
+	}
 }
