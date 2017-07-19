@@ -11,9 +11,9 @@ public class EchoDirectoryCommand implements Command{
     public void execute() {
 	
 	if(this.command.equals("user")) {
-	    System.out.println(System.getProperty("user.name"));
+	    Console.print(System.getProperty("user.name") + "<br>");
 	} else {
-	    System.out.println(command);
+	    Console.print(command + "<br");
 	}
 	
     }

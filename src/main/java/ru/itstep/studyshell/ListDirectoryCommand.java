@@ -12,9 +12,12 @@ public class ListDirectoryCommand implements Command{
 	
         File[] listOfFiles = folder.listFiles();
 
+        StringBuilder sb = new StringBuilder();
         for(int i=0; i<listOfFiles.length; i++) {
-           System.out.println(listOfFiles[i].getName());
+            sb.append(listOfFiles[i].getName() + "\n <br>");
         }
+        
+        Console.print(sb.toString());
 	
     }
 

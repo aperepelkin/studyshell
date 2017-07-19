@@ -41,7 +41,7 @@ public class ChangeDirectoryCommand implements Command{
 		if (folder.exists()) {
 		    ListDirectoryCommandFactory.setCurrentDirectory(this.dir);
 		} else {
-		    System.err.println("There is no such directory");
+		    Console.print("There is no such directory");
 		}
 	    
 	}

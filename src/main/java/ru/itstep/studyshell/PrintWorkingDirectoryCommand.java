@@ -4,7 +4,7 @@ public class PrintWorkingDirectoryCommand implements Command{
   
     public void execute() {
 	
-	System.out.println(ListDirectoryCommandFactory.getCurrentDirectory());
+         Console.print(ListDirectoryCommandFactory.getCurrentDirectory() + "<br>");
     }
 
 }
