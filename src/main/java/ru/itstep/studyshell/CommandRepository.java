@@ -5,15 +5,15 @@ import java.util.List;
 
 public class CommandRepository {
 	
-	
 	private static CommandRepository instance;
 	List<CommandFactory> factories = new ArrayList<CommandFactory>();
-	
 	
 	
 	private CommandRepository () {
 		factories.add(new ListDirectoryCommandFactory());
 		factories.add(new EchoCommandFactory());
+		factories.add(new ExitCommandFactory());
+		factories.add(new CDCommandFactory());
 	}
 
 	public static CommandRepository getInstance() {
@@ -22,7 +22,6 @@ public class CommandRepository {
 			instance = new CommandRepository();
 		
 		return instance;
-	
 		
 	}
 	public Command create (String command) {
@@ -34,6 +33,5 @@ public class CommandRepository {
 			
 		}
 		return null;
-	}
-	
+	}	
 }
