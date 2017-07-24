@@ -1,35 +1,39 @@
-package ru.itstep.studyshell;
+package rm;
 
 import java.io.File;
 
+import directory.Directory;
+import ru.itstep.studyshell.Command;
+import ru.itstep.studyshell.Console;
+
 public class RemoveCommand implements Command{
 
-    private String command;
+    private String[] command;
     
     /**
      * @param command
      */
-    public RemoveCommand(String command) {
+    public RemoveCommand(String[] command) {
 	this.command = command;
     }
 
     @Override
     public void execute() {
 	
-	String [] commandSplit = command.split(" ");
-	
-	if (commandSplit.length > 1) {
-	    switch (commandSplit[0]) {
+	if (command.length > 1) {
+	    switch (command[0]) {
 	        case "-f":  //удалить файл
-		    File file = new File(ListDirectoryCommandFactory.getCurrentDirectory() + "\\\\" + commandSplit[1]);
+	            Directory.getInstanse();
+		    File file = new File(Directory.getCurrentDirectory() + "\\\\" + command[1]);
 		    file.delete();
-		    Console.print("File delete<br>");
+		    Console.print("File delete", "black", true);
 		break;
 	        case "-rf": //удаление папок
-	            for (int i=1; i< commandSplit.length; i++) {
-	        	deleteFolder(new File(ListDirectoryCommandFactory.getCurrentDirectory() + "\\\\" + commandSplit[i]));
+	            for (int i=1; i< command.length; i++) {
+	        	Directory.getInstanse();
+	        	deleteFolder(new File(Directory.getCurrentDirectory() + "\\\\" + command[i]));
 	            }
-	            Console.print("Folder delete<br>");
+	            Console.print("Folder delete", "black", true);
 	        break;
 	    }
 	}

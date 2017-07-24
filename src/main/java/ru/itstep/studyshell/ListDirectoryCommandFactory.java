@@ -2,71 +2,44 @@ package ru.itstep.studyshell;
 
 import java.io.File;
 
+import cd.ChangeDirectoryCommand;
+import commands.Commands;
+import echo.EchoDirectoryCommand;
+import head.HeadCommand;
 import interfaces.CommandFactory;
+import mkdir.MakeDirectoryCommand;
+import parsing.Parsing;
+import pwd.PrintWorkingDirectoryCommand;
+import rm.RemoveCommand;
 
 public class ListDirectoryCommandFactory implements CommandFactory{
     
     
-    private static String currentDirectory = "./";
-    public static final String user = System.getProperty("user.name") + ":";
-    public static String consoleMessage = user + "~$";
     
-    
-    
-
-    public static String getCurrentDirectory() {
-        return currentDirectory;
-    }
-
-
-    public static void setCurrentDirectory(String currentDirectory) {
-	ListDirectoryCommandFactory.currentDirectory = currentDirectory;
-    }
-    
-    public ListDirectoryCommandFactory() {
-	File file = new File(currentDirectory);
-	setCurrentDirectory(file.getAbsolutePath());
-    }
 
 
     public Command create(String command) {
 	
-	String [] splitCommand = command.split(" ");
 	
-	switch (splitCommand[0]) {
-        	case "ls":
-        	    return new ListDirectoryCommand();
-        	case "mkdir":
-        	    return new MakeDirectoryCommand(createCommand(splitCommand));
-        	case "pwd":
-        	    return new PrintWorkingDirectoryCommand();
-        	case "rm":
-        	    return new RemoveCommand(createCommand(splitCommand));
-        	case "exit":
-        	    App.setExit();
-        	case "echo":
-        	    return new EchoDirectoryCommand(createCommand(splitCommand));
-        	case "cd":
-        	    StringBuilder sb = new StringBuilder();
-        	    for (int i=1; i<splitCommand.length; i++) {
-        		if (i != splitCommand.length - 1) {
-        		    sb.append(splitCommand[i]+" ");
-        		} else {
-        		    sb.append(splitCommand[splitCommand.length-1]);
-        		}
-        	    }
-        	    
-        	    if (!sb.toString().isEmpty()) {
-        		return new ChangeDirectoryCommand(sb.toString());
-        	    } else {
-        		return new ChangeDirectoryCommand();
-        	    }
-	}
+        Parsing parsing = new Parsing(command);
+	
+	
+	if (parsing.containsCommand(Commands.LS)) {
+	    String parametr = parsing.getParametr(Commands.LS);
+	    if (parametr.length() != 0) {
+		String [] splitParametr = parametr.split(" "); 
+		for (String str: splitParametr) {
+		    if (str.equals("-l")) {
+			return new ListDirectoryCommand(new DetailFilesOutputStrategy());
+		    }
+		}
+	    } else {
+		return new ListDirectoryCommand(new ShortFilesOutputStrategy());
+	    }
+	}  
+        return null;
 	
 
-	
-	
-	return null;
 
     }
 
@@ -81,12 +54,6 @@ public class ListDirectoryCommandFactory implements CommandFactory{
     
     
 
-    public static void calibration() {
-	// TODO Auto-generated method stub
-		File f = new File (currentDirectory);
-		currentDirectory = f.getAbsolutePath().substring(0, f.getAbsolutePath().length()-2);
-		String[] dirToShow = currentDirectory.split("\\\\");
-		consoleMessage = ListDirectoryCommandFactory.user + "~/" + dirToShow[dirToShow.length-1] + "$";
-    }
+    
 
 }

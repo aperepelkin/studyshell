@@ -3,22 +3,43 @@ package ru.itstep.studyshell;
 import java.io.File;
 import java.util.Arrays;
 
-public class ListDirectoryCommand implements Command{
+import directory.Directory;
+import interfaces.FilesOutputStrategy;
 
+public class ListDirectoryCommand implements Command{
+    
+    
+    private FilesOutputStrategy outputStrategy;
+    
+
+    
+    
+    
     public void execute() {
 	// TODO Auto-generated method stub
-	
-	File folder = new File(ListDirectoryCommandFactory.getCurrentDirectory());
+	Directory.getInstanse();
+	File folder = new File(Directory.getCurrentDirectory());
 	
         File[] listOfFiles = folder.listFiles();
 
-        StringBuilder sb = new StringBuilder();
+        String [] sb = new String[listOfFiles.length];
         for(int i=0; i<listOfFiles.length; i++) {
-            sb.append(listOfFiles[i].getName() + "\n <br>");
+            sb[i] = listOfFiles[i].getName() + "\n <br>";
         }
         
-        Console.print(sb.toString());
+        
+        outputStrategy.output(Arrays.asList(listOfFiles));
+        
+        
 	
     }
+    
+    
+    public ListDirectoryCommand(FilesOutputStrategy outputStrategy) {
+        this.outputStrategy = outputStrategy;
+    } 
+    
+    
+    
 
 }
