@@ -8,7 +8,7 @@ public class App {
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
 			String line = scanner.nextLine();
-			
+			 
 			Command command = CommandRepository.getInstance().create(line);
 			if (command != null)
 				command.execute();
