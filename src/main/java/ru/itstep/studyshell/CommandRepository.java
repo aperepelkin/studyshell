@@ -3,12 +3,17 @@ package ru.itstep.studyshell;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class CommandRepository {
 	private static CommandRepository instance;
 	private List<CommandFactory> factories = new ArrayList<CommandFactory>();
 
 	private CommandRepository() {
 		factories.add(new ListDirectoryCommandFactory());
+		factories.add(new CdDirectoryCommandFactory());
+		
+		
 	}
 
 	public static CommandRepository getInstance() {

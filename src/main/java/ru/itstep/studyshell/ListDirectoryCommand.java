@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 public class ListDirectoryCommand implements Command {
 
+	
+	
 	private FilesOutputStrategy outputStrategy;
 	
 	public void execute() {
@@ -14,6 +16,8 @@ public class ListDirectoryCommand implements Command {
 	}
 
 	public ListDirectoryCommand(FilesOutputStrategy outputStrategy) {
+		
+		
 		this.outputStrategy = outputStrategy;
 	}
 }
