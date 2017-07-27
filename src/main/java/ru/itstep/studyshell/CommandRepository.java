@@ -11,7 +11,7 @@ public class CommandRepository {
 
 	private CommandRepository() {
 		factories.add(new ListDirectoryCommandFactory());
-		factories.add(new CdDirectoryCommandFactory());
+		factories.add(new CDCommandFactory());
 		factories.add(new ExitCommandFactory());
 		
 		
