@@ -10,8 +10,4 @@ public class ExitCommandFactory implements CommandFactory {
 		return null;
 	}
 
-	public Command create(String command) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
