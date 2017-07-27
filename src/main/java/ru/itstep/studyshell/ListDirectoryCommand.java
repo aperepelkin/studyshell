@@ -8,7 +8,7 @@ public class ListDirectoryCommand implements Command {
 	private FilesOutputStrategy outputStrategy;
 	
 	public void execute() {
-		File file = new File("./");
+		File file = new File(App.getInstance().getCurrentDirectory());
 		File [] listOfFiles = file.listFiles();
 		outputStrategy.output(Arrays.asList(listOfFiles));
 	}
