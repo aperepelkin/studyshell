@@ -13,7 +13,7 @@ public class CommandRepository {
 		factories.add(new ListDirectoryCommandFactory());
 		factories.add(new CDCommandFactory());
 		factories.add(new ExitCommandFactory());
-		factories.add(new ChangeDirectoryCommand());
+		
 		
 		
 	}
