@@ -8,7 +8,7 @@ public class CDCommand  implements Command{
 	
 	public void execute() {
 		
-		App.getInstance().setDirectory(new File (directory));
+		App.getInstance().setDirectory(new File (App.getInstance().getDirectory(), directory));
 	}
 
 	public  CDCommand(String directory) {
