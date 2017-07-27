@@ -14,6 +14,8 @@ public class CommandRepository {
 		factories.add(new CdDirectoryCommandFactory());
 		
 		
+		
+		
 	}
 
 	public static CommandRepository getInstance() {

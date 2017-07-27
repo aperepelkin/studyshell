@@ -1,4 +1,4 @@
-package ru.itstep.studyshell;
+package svalka;
 
 public class toDir {
 	private static String curentDirectory;
