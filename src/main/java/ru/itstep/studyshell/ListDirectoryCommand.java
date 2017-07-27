@@ -12,7 +12,7 @@ public class ListDirectoryCommand implements Command{
 	
 	public void execute() {
 		
-		File file = new File(App.getInstance().getDirectory());
+		File file = (App.getInstance().getDirectory());
 		File [] listOfFiles = file.listFiles();
 		outputStrategy.output(Arrays.asList(listOfFiles));
 	

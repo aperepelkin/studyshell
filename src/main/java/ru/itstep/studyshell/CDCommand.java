@@ -1,12 +1,14 @@
 package ru.itstep.studyshell;
 
+import java.io.File;
+
 public class CDCommand  implements Command{
 
 	String directory ;
 	
 	public void execute() {
 		
-		App.getInstance().setDirectory(directory);
+		App.getInstance().setDirectory(new File (directory));
 	}
 
 	public  CDCommand(String directory) {

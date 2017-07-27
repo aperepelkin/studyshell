@@ -1,5 +1,6 @@
 package ru.itstep.studyshell;
 
+import java.io.File;
 import java.util.Scanner;
 
 
@@ -7,7 +8,7 @@ public class App {
 	
 	static App instance;
 	private static boolean exit = false ;
-	private String directory = "./";
+	private File directory = new File ("./");
 
     public static void main( String[] args ) {
     	
@@ -18,7 +19,7 @@ public class App {
      
     	if(command != null)
     		command.execute();
-    	else System.out.println("command not found");
+    	System.out.println(App.getInstance().getDirectory().getAbsolutePath());
     	 }
     }
     public static App getInstance() {
@@ -33,11 +34,11 @@ public class App {
     	exit = true;
     }
     
-	public String getDirectory() {
+	public File getDirectory() {
 		
 		return directory;
 	}
-	public void setDirectory(String directory) {
+	public void setDirectory(File directory) {
 		
 		this.directory = directory;
 	}

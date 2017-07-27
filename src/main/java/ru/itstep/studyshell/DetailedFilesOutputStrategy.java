@@ -37,46 +37,49 @@ public class DetailedFilesOutputStrategy implements FilesOutputStrategy {
 
 			System.out.println(line);
 		}
-
-		System.out.println("Размер папки: " + folderSize(files));
-
+		TotalSizes totalSizes = totalSize(files);
+		
+		System.out.println("Размер папки: " + totalSizes.foldersize);
+		System.out.println("Количество файлов: " + totalSizes.count);
+		System.out.println("Количество каталогов: " + totalSizes.countDirectory);
+	}
+	
+	private class TotalSizes {
+		long foldersize;
+		long count;
+		long countDirectory;
+		
+		public void add(TotalSizes other) {
+			foldersize +=other.foldersize;
+			count +=other.count;
+			countDirectory +=other.countDirectory;
+		}
 	}
 
-	private long folderSize(List<File> files) {
+	private TotalSizes totalSize(List<File> files) {
 
-		long foldersize = 0;
+		TotalSizes totalSize = new TotalSizes();
 
+		
 		for (File f : files) {
-			if (f.isFile())
-				foldersize += f.length();
+			if (f.isFile()) {
+				totalSize.foldersize += f.length();
+				totalSize.count++;
+			}
 
 			if (f.isDirectory()) {
 				File[] list = f.listFiles();
 				if (list != null)
-					foldersize += folderSize(Arrays.asList(list));
+					totalSize.add(totalSize(Arrays.asList(list)));
+			}
+			if(f.isDirectory()) {
+				totalSize.countDirectory++;
+				
+				
 			}
 
 		}
 
-		return foldersize;
+		return totalSize;
 	}
-/*
-	private long countFiles(File file2) {
-		if (.isDirectory()) {
-			File[] files = dir.listFiles();
-			for (File file : files) {
-				if (file.isDirectory())
-					countFiles(file);
-			}
-			for (File file : files) {
-				int n = 0;
-				if (file.isFile()) {
-					n++;
-
-					return 0;
-				}
-			}
-		}
-	}
-	*/
 }
