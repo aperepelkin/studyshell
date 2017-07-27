@@ -19,6 +19,7 @@ public class App {
      
     	if(command != null)
     		command.execute();
+    	
     	System.out.println(App.getInstance().getDirectory().getAbsolutePath());
     	 }
     }
