@@ -6,7 +6,7 @@ public class Dir {
 	public static void toDirectiry(){
 		
 	}
-	public static Directory getInstance(){
+	public  static Dir getInstance(){
 		if (instance==null) {
 			instance = new Dir();
 		}
