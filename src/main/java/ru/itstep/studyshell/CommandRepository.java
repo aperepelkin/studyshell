@@ -10,10 +10,10 @@ public class CommandRepository {
 	
 	
 	private CommandRepository () {
-		factories.add(new ListDirectoryCommandFactory());
-		factories.add(new EchoCommandFactory());
-		factories.add(new ExitCommandFactory());
-		factories.add(new CDCommandFactory());
+		factories.add(ListDirectoryCommand.createFactory());
+		factories.add(EchoCommand.createFactory());
+		factories.add(ExitCommand.createFactory());
+		factories.add(ChangeDirectoryCommand.createFactory());
 	}
 
 	public static CommandRepository getInstance() {
@@ -27,7 +27,7 @@ public class CommandRepository {
 	public Command create (String command) {
 		
 		for(CommandFactory factory: factories) {
-			Command result = factory.creat(command);
+			Command result = factory.create(command);
 			if(result != null)
 				return result;
 			
