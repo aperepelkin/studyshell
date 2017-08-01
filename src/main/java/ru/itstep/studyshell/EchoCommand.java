@@ -4,14 +4,15 @@ public class EchoCommand implements Command {
 	
 	private static final String COMMAND = "echo";
 	
-	private static class Factory implements CommandFactory {
+	private static class Factory extends BaseCommandFactory {
 
-		public Command create(String command) {
-			String[] split = command.split(" ");
-			if(split.length > 1 && split[0].equals(COMMAND)) {
-				return new EchoCommand(split[1]);
-			}
-			return null;
+		public Factory() {
+			super(COMMAND);
+		}
+
+		@Override
+		protected Command createCommand(String option) {
+			return new EchoCommand(option);
 		}
 	}
 	
