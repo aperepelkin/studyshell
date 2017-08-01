@@ -40,4 +40,8 @@ public class App {
 		
 		this.directory = directory;
 	}
+	public void setCurrentDirectory(String directory2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
