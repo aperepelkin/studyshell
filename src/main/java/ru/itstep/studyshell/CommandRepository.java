@@ -10,6 +10,7 @@ public class CommandRepository {
 	private CommandRepository() {
 		factories.add(new ListDirectoryCommandFactory());
 		factories.add(ChangeDirectoryCommand.createFactory());
+		factories.add(EchoCommand.createFactory());
 	}
 
 	public static CommandRepository getInstance() {

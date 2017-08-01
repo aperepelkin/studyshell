@@ -7,10 +7,8 @@ public class ChangeDirectoryCommand implements Command {
 	private static class Factory implements CommandFactory {
 
 		public Command create(String command) {
-			// cd /home/user/blala
 			String[] split = command.split(" ");
-			// {"cd", "/home/user/blala"}
-			if(split.length > 1 && split[0].equals(COMMAND)) {
+			if(split.length > 1 && split[0].equalsIgnoreCase(COMMAND)) {
 				return new ChangeDirectoryCommand(split[1]);
 			}
 			return null;
@@ -19,7 +17,7 @@ public class ChangeDirectoryCommand implements Command {
 	
 	private String directory;
 	
-	private ChangeDirectoryCommand(String directory) {
+	public ChangeDirectoryCommand(String directory) {
 		this.directory = directory;
 	}
 

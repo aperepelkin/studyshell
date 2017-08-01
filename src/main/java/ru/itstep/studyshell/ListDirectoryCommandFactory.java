@@ -13,5 +13,4 @@ public class ListDirectoryCommandFactory implements CommandFactory {
 		}
 		return null;
 	}
-
 }

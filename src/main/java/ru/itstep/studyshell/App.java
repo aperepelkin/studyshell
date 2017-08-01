@@ -16,8 +16,6 @@ public class App {
 		Command command = CommandRepository.getInstance().create(line);
 		if (command != null)
 			command.execute();
-		System.out.println("\b");
-		line = scanner.nextLine();
 	}
 	
 	public static App getInstance() {
