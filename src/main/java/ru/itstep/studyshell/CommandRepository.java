@@ -14,6 +14,7 @@ public class CommandRepository {
 		factories.add(new CDCommandFactory());
 		factories.add(new ExitCommandFactory());
 		factories.add(new EchoCommandFactory());
+		factories.add(new DateCommandFactory());
 		
 		
 		
