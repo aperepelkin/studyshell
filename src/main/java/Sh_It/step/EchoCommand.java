@@ -18,12 +18,27 @@ public class EchoCommand implements Command{
 
 		@Override
 		protected Command createCommand(String option) {
-			String[] split = option.split(" ");
-			if(option.startsWith(COMMAND))
+			// TODO Auto-generated method stub
+			
+			
+			System.out.println(option);
+			
+			if (option.split(" ")[0].equals("echo")){
+				System.out.println("gdfgdfgdfgdfg");
 				return new EchoCommand(option.split(" ")[1]);
+			}
+			
+			
+			
+			if(option.startsWith(COMMAND)){
+				System.out.println("here");
+				return new EchoCommand(option.split(" ")[1]);
+			}
 			
 			return null;
 		}
+
+		
 	}
 	
 	private String field;
