@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 
+
 public class EchoCommand implements Command{
 
 	private static final String COMMAND = "echo";
@@ -16,8 +17,23 @@ public class EchoCommand implements Command{
 
 		@Override
 		protected Command createCommand(String option) {
-			// TODO Auto-generated method stub
-			return new EchoCommand(option);
+		//тут код
+			System.out.println(option);
+			
+			if (option.split(" ")[0].equals("echo")){
+				System.out.println("gdfgdfgdfgdfg");
+				return new EchoCommand(option.split(" ")[1]);
+			}
+			
+			
+			
+			if(option.startsWith(COMMAND)){
+				System.out.println("here");
+				return new EchoCommand(option.split(" ")[1]);
+				//до сюда==========================
+			}
+			
+			return null;
 		}
 	}
 	
